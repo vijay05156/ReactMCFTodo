@@ -7,3 +7,9 @@ export enum Color{
     DANGER='danger',
     WARNING='warning'
 }
+
+export enum TODO_STATUS{
+    ALL,
+    ACTIVE,
+    DEACTIVE
+}

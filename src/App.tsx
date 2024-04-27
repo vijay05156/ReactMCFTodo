@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 import './App.css';
-import Todo from './pages/Todo';
+import Box from './components/Box';
+import Todo from './pages/Todo/Todo';
 
 function App() {
+
   return (
-    <Todo/>
+    <Fragment>
+		<Box 
+			child={<Todo/>} 
+			height="500px" 
+			width="500px"
+			className="customBox"
+		/>
+
+    </Fragment>
   )
 }
 

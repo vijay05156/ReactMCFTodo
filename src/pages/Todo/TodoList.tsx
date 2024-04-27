@@ -30,6 +30,9 @@ const TodoList : FC<ITodoList> = (props)=>{
     return (
         <div className="todo-list-container">
             <ul className="list-group">
+                {items.length === 0 &&
+                    <p className="text-center">No items..</p>
+                }
                 {items.map((item)=>(
                     <li key={item.id} className={` ${item.isActive ? 'activeTodo' : 'inActiveTodo'} list-group-item d-flex justify-content-between align-items-center`}>
                         <div className="d-flex w-100">

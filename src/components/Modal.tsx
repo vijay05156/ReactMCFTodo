@@ -12,15 +12,16 @@ interface IModal{
     height? : string
     width? : string
     noSecondaryAction? : boolean
+    secondaryBtnLabel? : string
 }
 
 const Modal : FC<IModal> = (props)=>{
 
-    const {child,actionName,onAction,onCancel,title,width,height,noSecondaryAction} = props;
+    const {child,actionName,onAction,onCancel,title,width,height,noSecondaryAction,secondaryBtnLabel} = props;
 
     return(
         <div className="modal-overlay">
-            <div className="modal" style={{width : width || '', height : height || ''}}>
+            <div data-testid='modal-div' className="modal" style={{width : width || '', height : height || ''}}>
                 <div className="d-flex justify-content-between">
                     <h4>{title}</h4>
                     <Button
@@ -42,7 +43,7 @@ const Modal : FC<IModal> = (props)=>{
                     {!noSecondaryAction && 
                         <Button
                             color={Color.DANGER}
-                            label="No"
+                            label={secondaryBtnLabel || 'Close'}
                             onClick={onCancel}
                         />
                     }

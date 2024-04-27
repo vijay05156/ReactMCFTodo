@@ -44,7 +44,7 @@ const AddTodo = forwardRef((props: IAddTodo,ref : any)=>{
     return(
         <Fragment>
             <form onSubmit={onSubmitHandler}>
-                <div>
+                <div className="mt-2">
                     <label>Title</label>
                     <CustomInput
                         type="text"
@@ -53,7 +53,7 @@ const AddTodo = forwardRef((props: IAddTodo,ref : any)=>{
                     />
                     { error.titleError && <p className="text-danger">{error.titleError}</p>}
                 </div>
-                <div>
+                <div className="mt-2">
                     <label>Description</label>
                     <CustomTextArea
                         height="80px"

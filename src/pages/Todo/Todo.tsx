@@ -11,10 +11,12 @@ import { TODO_STATUS } from "../../types/enum";
 
 const Todo : FC = ()=>{
 
-    const btnRef = useRef<any>();
+    const btnRef = useRef<HTMLButtonElement>(null);
+
     const [openModal,setOpenModal] = useState<boolean>(false);
     const [todoStatus,setTodoStatus] = useState<TODO_STATUS>(TODO_STATUS.ALL);
-
+    const [filterTodo,setFilterTodo] = useState<TodoType[]>([]);
+    
     const [todoItems,setTodoItems] = useState<TodoType[]>([{
         description : 'Test Description',
         id : 1,
@@ -22,7 +24,6 @@ const Todo : FC = ()=>{
         title : "Test Todo"
     }]);
 
-    const [filterTodo,setFilterTodo] = useState<TodoType[]>([]);
 
     //Function is used to add item in todo
     const onAddTodo = useCallback((todo : TodoType)=>{
@@ -33,7 +34,7 @@ const Todo : FC = ()=>{
 
     //Function is used to call child form submit
     const onAddAction = useCallback(()=>{
-        btnRef.current.click();
+        btnRef?.current?.click();
     },[btnRef])
 
     //Function is used to delete the todo item
@@ -60,7 +61,7 @@ const Todo : FC = ()=>{
     
         if (todoStatus === TODO_STATUS.ACTIVE)
             filteredTodos = filteredTodos.filter(item => item.isActive);
-        else if (todoStatus === TODO_STATUS.DEACTIVE)
+        else if (todoStatus === TODO_STATUS.COMPLETED)
             filteredTodos = filteredTodos.filter(item => !item.isActive);
     
         setFilterTodo(filteredTodos);
@@ -72,7 +73,7 @@ const Todo : FC = ()=>{
         setTodoStatus(todoStatus);
         if(todoStatus === TODO_STATUS.ACTIVE)
             setFilterTodo(todoItems.filter(item=>item.isActive));
-        else if(todoStatus === TODO_STATUS.DEACTIVE)
+        else if(todoStatus === TODO_STATUS.COMPLETED)
             setFilterTodo(todoItems.filter(item=>!item.isActive));
         else
             setFilterTodo(todoItems);

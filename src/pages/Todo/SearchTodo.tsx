@@ -24,9 +24,10 @@ const SearchTodo : FC<ISearchTodo> = (props)=>{
                     type="text"
                     onChange={onSearchHandler}
                     className="search-input"
+                    placeholder="Search Items"
                 />
                 <Button
-                    color={Color.WARNING}
+                    color={Color.SUCCESS}
                     icon={ <i className="fa fa-plus"></i>}
                     label=""
                     onClick={onAddTodo}

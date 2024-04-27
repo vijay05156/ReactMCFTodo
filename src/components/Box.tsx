@@ -12,7 +12,7 @@ const Box : FC<IBox> = (props)=>{
     const {height,width, child ,className} = props;
 
     return(
-        <div className={className || ''} style={{width :width,height : height}}>
+        <div data-testid='box-component' className={className || ''} style={{width :width,height : height}}>
             {child}
         </div>
     )

@@ -25,8 +25,11 @@ const TodoFotter : FC<ITodoFotter> = (props)=>{
     return(
         <div className="d-flex justify-content-center">
             {filterType.map(item=>(
-                <div key={item.id} className={` ${selectedItem === item.id ? 'active' : 'fotterItem'} me-3 cursor-pointer`} onClick={()=>onFilterTodoHandler(item.id,item.type)}>
-                    <p>{item.title}</p>
+                <div key={item.id} 
+                    className={` ${selectedItem === item.id ? 'active' : 'fotterItem'} me-3 cursor-pointer`}
+                    data-testid={`fotter-itemId-${item.id}`}          
+                >
+                    <p  onClick={()=>onFilterTodoHandler(item.id,item.type)}>{item.title}</p>
                 </div>
             ))}
         </div>

@@ -8,7 +8,7 @@ import TodoFotter from "./TodoFotter";
 import { TODO_STATUS } from "../../types/enum";
 
 
-
+let firstRender = true;
 const Todo : FC = ()=>{
 
     const btnRef = useRef<HTMLButtonElement>(null);
@@ -82,7 +82,21 @@ const Todo : FC = ()=>{
     useEffect(()=>{
         setFilterTodo(todoItems);
         onFilterByType(todoStatus);
+
+        if(!firstRender)
+            localStorage.setItem('todo-items',JSON.stringify(todoItems))
+          
     },[todoItems,onFilterByType,todoStatus])
+
+
+    useEffect(()=>{
+        const localStorageItems = localStorage.getItem('todo-items');
+        if(localStorageItems)
+            setTodoItems(JSON.parse(localStorageItems))
+           
+        firstRender = false;
+    },[])
+
 
     return(
         <Fragment>

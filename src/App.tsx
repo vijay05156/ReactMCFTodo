@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,memo } from 'react';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -17,9 +17,8 @@ function App() {
 			width="500px"
 			className="customBox"
 		/>
-
     </Fragment>
   )
 }
 
-export default App;
+export default memo(App);

@@ -15,11 +15,14 @@ const TodoList : FC<ITodoList> = (props)=>{
 
     const [openModal,setOpenModal] = useState<boolean>(false);
 
+
+    //Function is used to open Delete Alert popup.
     const onDeleteAlertHandler = (todoId : number)=>{
         setSelectedTodoId(todoId)
         setOpenModal(true);
     }
-    
+
+    //Function is used to invoke action on modal actionBtn.
     const onModalActionHandler = useCallback(()=>{
         onDeleteTodo(selectedTodoId);
         setOpenModal(false)
@@ -34,21 +37,22 @@ const TodoList : FC<ITodoList> = (props)=>{
                     <p className="text-center">No items..</p>
                 }
                 {items.map((item)=>(
-                    <li key={item.id} className={` ${item.isActive ? 'activeTodo' : 'inActiveTodo'} list-group-item d-flex justify-content-between align-items-center`}>
+                    <li key={item.id} className={` ${item.isActive ? 'activeTodo' : 'completeTodo'} todo-list-item list-group-item `}>
                         <div className="d-flex w-100">
                             <input 
                                 type="checkbox" 
-                                id="todo-checkbox" 
+                                id={`todo-checkbox-${item.id}`} 
+                                data-testid={`todo-checkbox-${item.id}`}
                                 className="todo-checkbox" 
                                 checked={!item.isActive}
                                 onChange={(e : React.ChangeEvent<HTMLInputElement>)=>onCompeletTodo(item.id,e.target.checked)} 
                             />
-                            <h5 className="mb-1 ms-2">{item.title}</h5>
+                            <h6 className="mb-1 ms-2">{item.title}</h6>
                             <span className="ms-3">{item.description}</span>
                         </div>
                        
                         <span className=" ms-2 cursor-pointer">
-                            <i className="fa fa-trash text-danger" onClick={()=>onDeleteAlertHandler(item.id)}></i>
+                            <i data-testid={`delete-icon-${item.id}`} className="fa fa-trash text-danger" onClick={()=>onDeleteAlertHandler(item.id)}></i>
                         </span>
                     </li>
                     

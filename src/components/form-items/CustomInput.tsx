@@ -16,7 +16,7 @@ const CustomInput : FC<ICustomInput> = (props)=>{
             type={type}
             className={`form-control ${className || ''}`}
             placeholder={placeholder || ''}
-            onChange={onChange ? (e)=>onChange(e.target.value) : (()=>{})}
+            onChange={onChange ? (e)=>onChange(type === ('text' || 'email') ? e.target.value.trim() : e.target.value) : (()=>{})}
         />
     )
 }

@@ -41,6 +41,7 @@ test('Should able to chnage status',()=>{
     const activeElement = screen.getByText(/active/i);
     fireEvent.click(activeElement);
     expect(mockFn).toHaveBeenCalled();
+    expect(mockFn).toHaveBeenCalledWith(TODO_STATUS.ACTIVE);
 })
 
 

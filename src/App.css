@@ -123,7 +123,7 @@
 .activeTodo{
   background-color: #4CCD99;
 }
-.inActiveTodo{
+.completeTodo{
   background-color: #FA7070;
   text-decoration-line: line-through;
 }
@@ -146,4 +146,13 @@
 
 .active{
   color: #8576FF; /* Example highlighting style */
+}
+
+.todo-list-item{
+  cursor: pointer;
+  transition: all;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
 }

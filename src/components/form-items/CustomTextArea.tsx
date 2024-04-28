@@ -17,7 +17,7 @@ const CustomTextArea : FC<ICustomTextArea> = (props)=>{
             className={`form-control ${className || ''}`}
             placeholder={placeholder || ''}
             style={{width : width, height : height}}
-            onChange={onChange ? (e)=>onChange(e.target.value) : (()=>{})}
+            onChange={onChange ? (e)=>onChange(e.target.value.trim()) : (()=>{})}
         />
     )
 }
